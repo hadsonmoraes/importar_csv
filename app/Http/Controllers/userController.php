@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class userController extends Controller
 {
@@ -62,6 +63,10 @@ class userController extends Controller
                     $arrayValues[$keyData][$header] = Hash::make(Str::random(7), ['rounds' => 12]);
                 }
             }
+
+            $arrayValues[$keyData]['created_at'] = Carbon::now();
+            $arrayValues[$keyData]['updated_at'] = Carbon::now();
+
             $numberRegisterRecords++;
         }
 
